@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "350882100092",
+    "project_id": "construction-industry-b8020",
+    "storage_bucket": "construction-industry-b8020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350882100092:android:00a3ce0075f15d6983eaf9",
+        "android_client_info": {
+          "package_name": "com.example.procurement_for_construction_industry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350882100092-6ghku36rg87p8g0pq4re1esl9r6jpqv4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiHb7cSOtYZr3gqZlALaT2DXyTyxlqqkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350882100092-6ghku36rg87p8g0pq4re1esl9r6jpqv4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
