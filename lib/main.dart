@@ -4,6 +4,7 @@ import 'package:procurement_for_construction_industry/providers/auth/forgot_prov
 import 'package:procurement_for_construction_industry/providers/auth/login_provider.dart';
 import 'package:procurement_for_construction_industry/providers/auth/signup_provider.dart';
 import 'package:procurement_for_construction_industry/providers/auth/user_provider.dart';
+import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';
 import 'package:procurement_for_construction_industry/screens/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => UserPrivider()),
       ChangeNotifierProvider(create: (context) => LoginProvider()),
       ChangeNotifierProvider(create: (context) => ForgotProvider()),
+      ChangeNotifierProvider(create: (context) => SiteManagerProvider()),
     ],
     child: const MyApp(),
   ));
