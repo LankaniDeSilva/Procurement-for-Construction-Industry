@@ -8,11 +8,15 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.isObscure = false,
     this.controller,
+    this.enabled = false,
+    this.onChanged,
   }) : super(key: key);
 
   final String hintText;
   final bool isObscure;
   final TextEditingController? controller;
+  final bool enabled;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,9 @@ class CustomTextField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
+        enabled: enabled,
         obscureText: isObscure,
+        onChanged: onChanged,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           hintText: hintText,

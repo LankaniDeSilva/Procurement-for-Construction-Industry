@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/controllers/site_manager/site_manager_controller.dart';
+import 'package:procurement_for_construction_industry/providers/inventory/inventory_provider.dart';
 import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';
 import 'package:procurement_for_construction_industry/screens/main/home/home.dart';
 import 'package:procurement_for_construction_industry/screens/main/main_screen.dart';
@@ -64,8 +65,18 @@ class UserPrivider extends ChangeNotifier {
         } else {
           Logger().i("User is signed in!");
           fetchUser(user.uid);
-          Provider.of<SiteManagerProvider>(context, listen: false)
+          await Provider.of<SiteManagerProvider>(context, listen: false)
               .fetchSiteManager(user.uid, context);
+
+          SiteManager manager =
+              Provider.of<SiteManagerProvider>(context, listen: false)
+                  .siteManager;
+
+          // ignore: use_build_context_synchronously
+          await Provider.of<InventoryProvider>(context, listen: false)
+              .fetchInventory(manager.location);
+
+          // ignore: use_build_context_synchronously
           UtilFunction.navigator(context, const SiteManagerRegistration());
         }
       });

@@ -6,6 +6,22 @@ part of objects;
 // JsonSerializableGenerator
 // **************************************************************************
 
+InventoryModel _$InventoryModelFromJson(Map<String, dynamic> json) =>
+    InventoryModel(
+      json['location'] as String,
+      json['siteName'] as String,
+      (json['size'] as num).toDouble(),
+      json['id'] as String,
+    );
+
+Map<String, dynamic> _$InventoryModelToJson(InventoryModel instance) =>
+    <String, dynamic>{
+      'location': instance.location,
+      'siteName': instance.siteName,
+      'size': instance.size,
+      'id': instance.id,
+    };
+
 SiteManager _$SiteManagerFromJson(Map<String, dynamic> json) => SiteManager(
       json['name'] as String,
       json['phone'] as String,
