@@ -55,7 +55,9 @@ class SiteManagerProvider extends ChangeNotifier {
       //-start the loader
       setLoading(true);
 
-      await SiteManagerController().fetchSiteManagerData(id).then((value) {
+      await SiteManagerController()
+          .fetchSiteManagerData(id, context)
+          .then((value) {
         if (value != null) {
           _siteManager = value;
 
@@ -173,9 +175,12 @@ class SiteManagerProvider extends ChangeNotifier {
         _sitemanagerNameController.clear();
         _phoneController.clear();
         _locationController.clear();
+
+        setLoading(false);
       }
     } catch (e) {
       Logger().e(e);
+      setLoading(false);
     }
   }
 }

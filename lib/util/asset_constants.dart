@@ -19,4 +19,6 @@ class AssetsContants {
   static const profileIcon = '${iconPath}profile-icon.svg';
   static const orderIcon = '${iconPath}order-icon.svg';
   static const inventoryIcon = '${iconPath}inventory-icon.svg';
+  static const editIcon = '${iconPath}edit-icon.svg';
+  static const deleteIcon = '${iconPath}delete-icon.svg';
 }

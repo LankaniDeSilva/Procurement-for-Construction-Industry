@@ -15,19 +15,17 @@ import 'package:procurement_for_construction_industry/util/asset_constants.dart'
 import 'package:procurement_for_construction_industry/util/util_function.dart';
 import 'package:provider/provider.dart';
 
+import '../../providers/inventory/inventory_provider.dart';
 import '../../providers/site_manager/site_manager_provider.dart';
 import '../../util/alert_helper.dart';
 import 'file_upload_controller.dart';
 
 class SiteManagerController {
-  //------Firebase auth instance
-  final FirebaseAuth auth = FirebaseAuth.instance;
-
   //-- create the user collection
   CollectionReference sitemanager =
       FirebaseFirestore.instance.collection('sitemanager');
 
-  //------------Sign up user in firestore cloud
+  //------------save site manager in firestore cloud
   Future<void> saveSiteManagerData(BuildContext context, String name,
       String phone, String location, String uid) async {
     try {
@@ -79,7 +77,8 @@ class SiteManagerController {
   }
 
   //---------------fetch user data saved in cloud firestore
-  Future<SiteManager?> fetchSiteManagerData(String uid) async {
+  Future<SiteManager?> fetchSiteManagerData(
+      String uid, BuildContext context) async {
     try {
       //firebase Query that retrieve sitemanager data
       DocumentSnapshot snapshot = await sitemanager.doc(uid).get();
