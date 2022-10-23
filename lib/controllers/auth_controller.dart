@@ -115,4 +115,21 @@ class AuthController {
       UtilFunction.navigator(context, const Login());
     });
   }
+
+  //---------------fetch user data saved in cloud firestore
+  Future<UserModel?> fetchUserData(String uid) async {
+    try {
+      //firebase Query that retrieve user data
+      DocumentSnapshot snapshot = await users.doc(uid).get();
+      Logger().i(snapshot.data());
+      //------mapping fetch data to user model
+      UserModel model =
+          UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
+      Logger().i(model.email);
+      return model;
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
+  }
 }

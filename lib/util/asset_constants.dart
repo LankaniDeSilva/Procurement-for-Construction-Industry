@@ -11,7 +11,12 @@ class AssetsContants {
 
   //assets images
   static const logo = '${imagePath}logo.png';
+  static const profileplaceholder = '${imagePath}profile-placeholder.svg';
 
   //assets icons
   static const googleIcon = '${iconPath}google-icons.svg';
+  static const homeIcon = '${iconPath}home-icon.svg';
+  static const profileIcon = '${iconPath}profile-icon.svg';
+  static const orderIcon = '${iconPath}order-icon.svg';
+  static const inventoryIcon = '${iconPath}inventory-icon.svg';
 }

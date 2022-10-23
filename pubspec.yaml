@@ -46,6 +46,9 @@ dependencies:
   awesome_dialog: ^3.0.2
   provider: ^6.0.4
   animated_snack_bar: ^0.3.0
+  flutter_svg: ^1.1.5
+  firebase_storage: ^11.0.2
+  image_picker: ^0.8.6
 
 dev_dependencies:
   flutter_test:
