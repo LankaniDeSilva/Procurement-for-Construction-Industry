@@ -8,6 +8,11 @@ import 'package:procurement_for_construction_industry/providers/site_manager/sit
 import 'package:procurement_for_construction_industry/screens/main/home/home.dart';
 import 'package:procurement_for_construction_industry/screens/main/main_screen.dart';
 import 'package:procurement_for_construction_industry/screens/site_manager/site_manager_registration.dart';
+import 'package:procurement_for_construction_industry/screens/staff/accountant/account_home.dart';
+import 'package:procurement_for_construction_industry/screens/staff/manager/manager_home.dart';
+import 'package:procurement_for_construction_industry/screens/staff/proc_depart/proc_dept_home.dart';
+import 'package:procurement_for_construction_industry/screens/supplier/supplier_home.dart';
+import 'package:procurement_for_construction_industry/util/alert_helper.dart';
 import 'package:procurement_for_construction_industry/util/util_function.dart';
 import 'package:provider/provider.dart';
 
@@ -63,21 +68,34 @@ class UserPrivider extends ChangeNotifier {
 
           UtilFunction.navigator(context, const SignUp());
         } else {
+          if (user.email!.contains('@s.')) {
+            UtilFunction.navigator(context, const SupplierHome());
+          } else if (user.email!.contains('@p.')) {
+            UtilFunction.navigator(context, const ProcDeptHome());
+          } else if (user.email!.contains('@m.')) {
+            UtilFunction.navigator(context, const ManagerHome());
+          } else if (user.email!.contains('@a.')) {
+            UtilFunction.navigator(context, const AccountStaff());
+          } else if (user.email!.contains('@g')) {
+            fetchUser(user.uid);
+            await Provider.of<SiteManagerProvider>(context, listen: false)
+                .fetchSiteManager(user.uid, context);
+
+            SiteManager manager =
+                Provider.of<SiteManagerProvider>(context, listen: false)
+                    .siteManager;
+
+            // ignore: use_build_context_synchronously
+            await Provider.of<InventoryProvider>(context, listen: false)
+                .fetchInventory(manager.location);
+
+            // ignore: use_build_context_synchronously
+            UtilFunction.navigator(context, const SiteManagerRegistration());
+          } else {
+            UtilFunction.navigator(context, const SignUp());
+          }
+
           Logger().i("User is signed in!");
-          fetchUser(user.uid);
-          await Provider.of<SiteManagerProvider>(context, listen: false)
-              .fetchSiteManager(user.uid, context);
-
-          SiteManager manager =
-              Provider.of<SiteManagerProvider>(context, listen: false)
-                  .siteManager;
-
-          // ignore: use_build_context_synchronously
-          await Provider.of<InventoryProvider>(context, listen: false)
-              .fetchInventory(manager.location);
-
-          // ignore: use_build_context_synchronously
-          UtilFunction.navigator(context, const SiteManagerRegistration());
         }
       });
     } catch (e) {
