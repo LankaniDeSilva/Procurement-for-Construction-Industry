@@ -4,19 +4,16 @@ import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import 'package:procurement_for_construction_industry/screens/main/main_screen.dart';
-import 'package:procurement_for_construction_industry/screens/site_manager/site_manager_registration.dart';
+
 import 'package:procurement_for_construction_industry/util/asset_constants.dart';
 import 'package:procurement_for_construction_industry/util/util_function.dart';
-import 'package:provider/provider.dart';
 
-import '../../providers/inventory/inventory_provider.dart';
-import '../../providers/site_manager/site_manager_provider.dart';
 import '../../util/alert_helper.dart';
 import 'file_upload_controller.dart';
 

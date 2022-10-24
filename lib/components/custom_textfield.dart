@@ -8,7 +8,7 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.isObscure = false,
     this.controller,
-    this.enabled = false,
+    this.enabled = true,
     this.onChanged,
   }) : super(key: key);
 
