@@ -50,3 +50,35 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'email': instance.email,
       'uid': instance.uid,
     };
+
+SupplierModel _$SupplierModelFromJson(Map<String, dynamic> json) =>
+    SupplierModel(
+      json['name'] as String,
+      json['address'] as String,
+      json['contactnumber'] as String,
+      json['location'] as String,
+    );
+
+Map<String, dynamic> _$SupplierModelToJson(SupplierModel instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'address': instance.address,
+      'contactnumber': instance.contactnumber,
+      'location': instance.location,
+    };
+
+ItemModel _$ItemModelFromJson(Map<String, dynamic> json) => ItemModel(
+      json['id'] as String,
+      json['name'] as String,
+      json['price'] as String,
+      json['qty'] as String,
+      SupplierModel.fromJson(json['supplierModel'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ItemModelToJson(ItemModel instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'price': instance.price,
+      'qty': instance.qty,
+      'supplierModel': instance.supplierModel,
+    };

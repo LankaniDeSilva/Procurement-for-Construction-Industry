@@ -6,3 +6,5 @@ part 'objects.g.dart';
 part 'inventory_model.dart';
 part 'site_manager.dart';
 part 'user_model.dart';
+part 'supplier_model.dart';
+part 'item_model.dart';
