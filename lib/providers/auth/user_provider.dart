@@ -68,6 +68,7 @@ class UserPrivider extends ChangeNotifier {
 
           UtilFunction.navigator(context, const SignUp());
         } else {
+          fetchUser(user.uid);
           if (user.email!.contains('@s.')) {
             UtilFunction.navigator(context, const SupplierHome());
           } else if (user.email!.contains('@p.')) {

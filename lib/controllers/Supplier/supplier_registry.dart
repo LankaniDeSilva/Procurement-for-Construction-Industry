@@ -24,14 +24,15 @@ class SupplierController {
     String address,
     String contactnumber,
     String location,
+    String uid,
   ) async {
     try {
       //-getting an unique document ID
-      String docid = supplier.doc().id;
+      // String docid = supplier.doc().id;
 
       //-saving the baby data in cloud firestore
-      await supplier.doc(docid).set({
-        "id": docid,
+      await supplier.doc(uid).set({
+        "id": uid,
         "supplierName": supplierName,
         "address": address,
         "contactnumber": contactnumber,
@@ -39,9 +40,9 @@ class SupplierController {
       });
       // ignore: use_build_context_synchronously
       AlertHelper.showAlert(context, "supplier Inserted Successfully",
-          'Success', DialogType.SUCCES);
+          'Success', DialogType.success);
     } catch (e) {
-      AlertHelper.showAlert(context, e.toString(), "Error", DialogType.ERROR);
+      AlertHelper.showAlert(context, e.toString(), "Error", DialogType.error);
     }
   }
 

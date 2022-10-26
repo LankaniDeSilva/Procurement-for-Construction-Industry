@@ -1,15 +1,13 @@
-import 'dart:io';
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/controllers/Supplier/supplier_registry.dart';
-import 'package:procurement_for_construction_industry/models/objects.dart';
-import 'package:procurement_for_construction_industry/providers/auth/user_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../models/objects.dart';
 import '../../util/alert_helper.dart';
+import '../auth/user_provider.dart';
 
 class SupplierProvider extends ChangeNotifier {
   //-------baby name text controller
@@ -36,8 +34,7 @@ class SupplierProvider extends ChangeNotifier {
   final _spLoc = TextEditingController();
 
   //----getter for registration no controller
-  TextEditingController get supplierLocationController =>
-      _spLoc;
+  TextEditingController get supplierLocationController => _spLoc;
 
   //---------loader state
   bool _isLoading = false;
@@ -95,6 +92,8 @@ class SupplierProvider extends ChangeNotifier {
   //---------start add baby process
   Future<void> addSupplier(BuildContext context) async {
     try {
+      UserModel user =
+          Provider.of<UserPrivider>(context, listen: false).userModel;
       //start the loader
 
       setLoading(true);
@@ -106,6 +105,7 @@ class SupplierProvider extends ChangeNotifier {
         _supplieraddressController.text,
         _supplierContactNumberController.text,
         _spLoc.text,
+        user.uid,
       );
 
       //clear text field
