@@ -108,4 +108,29 @@ class ItemController {
   //     return [];
   //   }
   // }
+
+  //----------fetch items
+  Future<List<ItemModel>> getItems() async {
+    try {
+      //----------query for fetching all the items list
+      QuerySnapshot snapshot = await item.get();
+
+      //----------product list
+      List<ItemModel> itemList = [];
+
+      //----------mapping fetch data to item model and store in item list
+      for (var element in snapshot.docs) {
+        //-----mapping to single item model
+        itemModel = ItemModel.fromJson(element.data() as Map<String, dynamic>);
+
+        //-----adding to the list
+        itemList.add(itemModel);
+      }
+
+      return itemList;
+    } catch (e) {
+      Logger().e(e);
+      return [];
+    }
+  }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:procurement_for_construction_industry/components/custom_button.dart';
 import 'package:procurement_for_construction_industry/components/custom_text.dart';
+import 'package:procurement_for_construction_industry/controllers/auth_controller.dart';
 import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';
 import 'package:procurement_for_construction_industry/screens/Supplier/Add%20Item.dart';
 import 'package:procurement_for_construction_industry/screens/main/main_screen.dart';
@@ -29,21 +30,30 @@ class _SupplierHomeState extends State<SupplierHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          InkWell(
+              onTap: () => AuthController().signoutUser(),
+              child: const Icon(Icons.logout)),
+        ],
+      ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              CustomNavigation(
-                text: 'Clinic schedule',
-                onTap: () =>
-                    UtilFunction.navigator(context, const SupplierRegister()),
-              ),
-              Padding(padding: const EdgeInsets.all(10.0)),
-              CustomNavigation(
-                text: 'Item Add',
-                onTap: () => UtilFunction.navigator(context, const ItemAdd()),
-              ),
-            ],
+        child: SafeArea(
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                CustomNavigation(
+                  text: 'Clinic schedule',
+                  onTap: () =>
+                      UtilFunction.navigator(context, const SupplierRegister()),
+                ),
+                Padding(padding: const EdgeInsets.all(10.0)),
+                CustomNavigation(
+                  text: 'Item Add',
+                  onTap: () => UtilFunction.navigator(context, const ItemAdd()),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/controllers/site_manager/site_manager_controller.dart';
+import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
 import 'package:procurement_for_construction_industry/providers/inventory/inventory_provider.dart';
 import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';
 import 'package:procurement_for_construction_industry/screens/main/home/home.dart';
@@ -79,6 +82,10 @@ class UserPrivider extends ChangeNotifier {
             UtilFunction.navigator(context, const AccountStaff());
           } else if (user.email!.contains('@g')) {
             fetchUser(user.uid);
+
+            await Provider.of<ItemProvider>(context, listen: false)
+                .fetchItems();
+
             await Provider.of<SiteManagerProvider>(context, listen: false)
                 .fetchSiteManager(user.uid, context);
 
@@ -86,11 +93,9 @@ class UserPrivider extends ChangeNotifier {
                 Provider.of<SiteManagerProvider>(context, listen: false)
                     .siteManager;
 
-            // ignore: use_build_context_synchronously
             await Provider.of<InventoryProvider>(context, listen: false)
                 .fetchInventory(manager.location);
 
-            // ignore: use_build_context_synchronously
             UtilFunction.navigator(context, const SiteManagerRegistration());
           } else {
             UtilFunction.navigator(context, const SignUp());

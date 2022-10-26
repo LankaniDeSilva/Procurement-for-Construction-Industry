@@ -48,6 +48,15 @@ class ItemProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //------initialize the item model list
+  List<ItemModel> _items = [];
+
+  //-----getter for item list
+  List<ItemModel> get items => _items;
+
+  //-----product controller instance
+  final ItemController _itemController = ItemController();
+
   // //------initialize the baby model list
   // List<SupplierModel> _clinics = [];
 
@@ -159,4 +168,36 @@ class ItemProvider extends ChangeNotifier {
   //     return [];
   //   }
   // }
+
+  //-----fetch products function
+  Future<void> fetchItems() async {
+    try {
+      //------start the loader
+      setLoading(true);
+
+      //----start fetching products
+      _items = await _itemController.getItems();
+      Logger().w(_items.length);
+
+      notifyListeners();
+
+      //-----stop loading
+      setLoading(false);
+    } catch (e) {
+      Logger().e(e);
+      setLoading(false);
+    }
+  }
+
+  //------------item details screen
+  //------------Store the selected item model
+  late ItemModel _itemModel;
+  //--------get selected product
+  ItemModel get productModel => _itemModel;
+
+  //-------set item model when click from the product card
+  void setItem(ItemModel model) {
+    _itemModel = model;
+    notifyListeners();
+  }
 }

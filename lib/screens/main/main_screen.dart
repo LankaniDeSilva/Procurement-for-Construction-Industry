@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     // Logger().w(widget.uid);
     _screens.addAll({
-      const HomeScreen(),
+      const Home(),
       const OrderScreen(),
       const Inventory(),
       const Profile(),

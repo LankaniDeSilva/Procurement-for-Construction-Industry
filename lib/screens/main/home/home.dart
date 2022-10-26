@@ -1,19 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:procurement_for_construction_industry/components/custom_text.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import '../../../components/custom_text.dart';
+
+import '../../../util/app_colors.dart';
+
+import 'widgets/products_grid.dart';
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Home> createState() => _HomeState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: CustomText(text: "Home"),
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 28),
+        child: Column(
+          children: const [
+            SizedBox(height: 25),
+            Center(
+              child: CustomText(
+                text: "Items",
+                fontSize: 26.0,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryColor,
+              ),
+            ),
+            SizedBox(height: 41.0),
+            ProductGrid()
+          ],
+        ),
       ),
     );
   }
