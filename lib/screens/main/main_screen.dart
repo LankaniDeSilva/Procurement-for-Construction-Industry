@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:procurement_for_construction_industry/screens/main/inventory/inventory.dart';
-import 'package:procurement_for_construction_industry/screens/main/order/orders.dart';
+import 'package:procurement_for_construction_industry/screens/main/orders/oders.dart';
 import 'package:procurement_for_construction_industry/util/asset_constants.dart';
 
 import '../../components/custom_text.dart';
@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
     // Logger().w(widget.uid);
     _screens.addAll({
       const Home(),
-      const OrderScreen(),
+      const Orders(),
       const Inventory(),
       const Profile(),
     });

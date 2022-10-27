@@ -6,6 +6,41 @@ part of objects;
 // JsonSerializableGenerator
 // **************************************************************************
 
+OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
+      id: json['id'] as String,
+      userModel: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+      total: (json['total'] as num).toDouble(),
+      items: (json['item'] as List<dynamic>)
+          .map((e) => CartItemModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      orderState: json['orderState'] as String,
+    );
+
+Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'user': instance.userModel.toJson(),
+      'total': instance.total,
+      'item': instance.items.map((e) => e.toJson()).toList(),
+      'orderState': instance.orderState,
+    };
+
+CartItemModel _$CartItemModelFromJson(Map<String, dynamic> json) =>
+    CartItemModel(
+      cartId: json['cartId'] as String,
+      qty: json['qty'] as int,
+      subTotal: (json['subTotal'] as num).toDouble(),
+      model: ItemModel.fromJson(json['model'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CartItemModelToJson(CartItemModel instance) =>
+    <String, dynamic>{
+      'cartId': instance.cartId,
+      'qty': instance.qty,
+      'subTotal': instance.subTotal,
+      'model': instance.model.toJson(),
+    };
+
 InventoryModel _$InventoryModelFromJson(Map<String, dynamic> json) =>
     InventoryModel(
       json['location'] as String,
@@ -70,8 +105,9 @@ Map<String, dynamic> _$SupplierModelToJson(SupplierModel instance) =>
 ItemModel _$ItemModelFromJson(Map<String, dynamic> json) => ItemModel(
       json['itemID'] as String,
       json['itemName'] as String,
-      json['itemPrice'] as String,
-      json['itemQTY'] as String,
+      (json['itemPrice'] as num).toDouble(),
+      json['itemQTY'] as int,
+      json['image'] as String,
     );
 
 Map<String, dynamic> _$ItemModelToJson(ItemModel instance) => <String, dynamic>{
@@ -79,4 +115,5 @@ Map<String, dynamic> _$ItemModelToJson(ItemModel instance) => <String, dynamic>{
       'itemName': instance.name,
       'itemPrice': instance.price,
       'itemQTY': instance.qty,
+      'image': instance.image,
     };

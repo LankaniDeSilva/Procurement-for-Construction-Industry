@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
+import 'package:procurement_for_construction_industry/screens/main/product_details/product_details.dart';
 
 import 'package:provider/provider.dart';
 
 import '../../../../components/custom_text.dart';
+import '../../../../providers/cart/cart_provider.dart';
 import '../../../../util/app_colors.dart';
+import '../../../../util/util_function.dart';
 
 class ProductGrid extends StatelessWidget {
   const ProductGrid({
@@ -54,15 +57,21 @@ class ProductTile extends StatelessWidget {
         Provider.of<ItemProvider>(context, listen: false).setItem(itemModel);
 
         // //------clear the product counter before go to the details screen
-        // Provider.of<CartProvider>(context, listen: false).clearCounter();
+        Provider.of<CartProvider>(context, listen: false).clearCounter();
 
         // //----------navigate to product details screen
-        // UtilFunction.navigator(context, const ProductDetails());
+        UtilFunction.navigator(context, const ItemDetails());
       },
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
           borderRadius: BorderRadius.circular(12.0),
+          image: DecorationImage(
+            image: NetworkImage(
+              itemModel.image,
+            ),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,

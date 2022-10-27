@@ -13,4 +13,5 @@ class AppColors {
   static const kRed = Color(0xFFF01F0E);
   static const deviderColor = Color(0xFF9D9D9D);
   static const appbarColor = Color(0xff0C79DE);
+  static const ashBorder = Color(0xFFC4C4C4);
 }

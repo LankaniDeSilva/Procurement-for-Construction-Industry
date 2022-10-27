@@ -6,8 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/controllers/Supplier/add_item.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
-import 'package:procurement_for_construction_industry/providers/auth/user_provider.dart';
-import 'package:provider/provider.dart';
 
 import '../../util/alert_helper.dart';
 
@@ -107,12 +105,12 @@ class ItemProvider extends ChangeNotifier {
 
       // Logger().i("Validation success");
       await ItemController().saveItem(
-        context,
-        _itemIDController.text,
-        _itemNameController.text,
-        _itemPriceController.text,
-        _itemQtyController.text,
-      );
+          context,
+          _itemIDController.text,
+          _itemNameController.text,
+          _itemPriceController.text,
+          _itemQtyController.text,
+          image);
 
       //clear text field
       _itemIDController.clear();
@@ -193,11 +191,54 @@ class ItemProvider extends ChangeNotifier {
   //------------Store the selected item model
   late ItemModel _itemModel;
   //--------get selected product
-  ItemModel get productModel => _itemModel;
+  ItemModel get itemModel => _itemModel;
 
   //-------set item model when click from the product card
   void setItem(ItemModel model) {
     _itemModel = model;
     notifyListeners();
+  }
+
+  //-----getter for related product list
+  List<ItemModel> get relatedItems {
+    List<ItemModel> temp = [];
+    //----------filter the product list
+    //---------remove the already selected product
+    for (var i = 0; i < _items.length; i++) {
+      if (_items[i].id != _itemModel.id) {
+        temp.add(_items[i]);
+      }
+    }
+    return temp;
+  }
+
+  //------pick an image
+  //-image picker instance
+  final ImagePicker _picker = ImagePicker();
+
+  //-------file object
+  File _image = File("");
+
+  //-getter for image
+  File get image => _image;
+
+  //-------function to pick file from gallery
+  Future<void> selectImage() async {
+    try {
+      // Pick an image
+      final XFile? pickFile =
+          await _picker.pickImage(source: ImageSource.gallery);
+
+      //-check if the user has pick a file or not
+      if (pickFile != null) {
+        //-assign to the file object
+        _image = File(pickFile.path);
+        notifyListeners();
+      } else {
+        Logger().e("No image selected");
+      }
+    } catch (e) {
+      Logger().e(e);
+    }
   }
 }
