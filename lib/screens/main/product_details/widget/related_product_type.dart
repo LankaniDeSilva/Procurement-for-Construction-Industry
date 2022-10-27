@@ -29,11 +29,10 @@ class RelatedProductTile extends StatelessWidget {
         width: 100,
         height: 83,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: AppColors.kWhite,
           borderRadius: BorderRadius.circular(12.0),
           image: DecorationImage(
             image: NetworkImage(
-              // "https://media.istockphoto.com/vectors/pumpkin-flat-design-vegetable-icon-vector-id1017915018?k=20&m=1017915018&s=612x612&w=0&h=P9swKR83-uYkc3j5uGVboTH9Q7mouaAhm9FbJZMnmGc="
               itemModel.image,
             ),
             fit: BoxFit.fill,

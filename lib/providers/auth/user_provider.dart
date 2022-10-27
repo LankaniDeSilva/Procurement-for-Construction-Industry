@@ -87,6 +87,10 @@ class UserPrivider extends ChangeNotifier {
             await Provider.of<ItemProvider>(context, listen: false)
                 .fetchItems();
 
+            //----fetch created orders
+            Provider.of<OrderProvider>(context, listen: false)
+                .fetchOrders(user.uid);
+
             await Provider.of<SiteManagerProvider>(context, listen: false)
                 .fetchSiteManager(user.uid, context);
 
@@ -96,10 +100,6 @@ class UserPrivider extends ChangeNotifier {
 
             await Provider.of<InventoryProvider>(context, listen: false)
                 .fetchInventory(manager.location);
-
-            //----fetch created orders
-            Provider.of<OrderProvider>(context, listen: false)
-                .fetchOrders(user.uid);
 
             UtilFunction.navigator(context, const SiteManagerRegistration());
           } else {
