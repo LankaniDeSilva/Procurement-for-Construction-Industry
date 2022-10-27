@@ -4,7 +4,9 @@ import 'package:procurement_for_construction_industry/providers/auth/forgot_prov
 import 'package:procurement_for_construction_industry/providers/auth/login_provider.dart';
 import 'package:procurement_for_construction_industry/providers/auth/signup_provider.dart';
 import 'package:procurement_for_construction_industry/providers/auth/user_provider.dart';
+import 'package:procurement_for_construction_industry/providers/cart/cart_provider.dart';
 import 'package:procurement_for_construction_industry/providers/inventory/inventory_provider.dart';
+import 'package:procurement_for_construction_industry/providers/order_provider/order_provider.dart';
 import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';
 import 'package:procurement_for_construction_industry/providers/Supplier/supplier_provider.dart';
 import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
@@ -29,6 +31,8 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => InventoryProvider()),
       ChangeNotifierProvider(create: (context) => SupplierProvider()),
       ChangeNotifierProvider(create: (context) => ItemProvider()),
+      ChangeNotifierProvider(create: (context) => CartProvider()),
+      ChangeNotifierProvider(create: (context) => OrderProvider()),
     ],
     child: const MyApp(),
   ));

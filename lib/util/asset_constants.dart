@@ -21,4 +21,7 @@ class AssetsContants {
   static const inventoryIcon = '${iconPath}inventory-icon.svg';
   static const editIcon = '${iconPath}edit-icon.svg';
   static const deleteIcon = '${iconPath}delete-icon.svg';
+  static const cartIcon = '${iconPath}cart-icon.svg';
+  static const backIcon = '${iconPath}back-icon.svg';
+  static const dialogIcon = '${iconPath}dialog-icon.svg';
 }

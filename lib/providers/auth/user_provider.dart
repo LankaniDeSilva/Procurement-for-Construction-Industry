@@ -23,6 +23,7 @@ import '../../controllers/auth_controller.dart';
 import '../../models/objects.dart';
 
 import '../../screens/auth/signup.dart';
+import '../order_provider/order_provider.dart';
 
 class UserPrivider extends ChangeNotifier {
   //---------User Model
@@ -95,6 +96,10 @@ class UserPrivider extends ChangeNotifier {
 
             await Provider.of<InventoryProvider>(context, listen: false)
                 .fetchInventory(manager.location);
+
+            //----fetch created orders
+            Provider.of<OrderProvider>(context, listen: false)
+                .fetchOrders(user.uid);
 
             UtilFunction.navigator(context, const SiteManagerRegistration());
           } else {

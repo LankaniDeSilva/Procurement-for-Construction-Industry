@@ -1,10 +1,13 @@
+import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import '../../util/alert_helper.dart';
+import '../site_manager/file_upload_controller.dart';
 
 class ItemController {
   //------Firebase auth instance
@@ -23,8 +26,17 @@ class ItemController {
     String itemName,
     String itemPrice,
     String itemQTY,
+    File img,
   ) async {
     try {
+      //------uploading the image file
+      UploadTask? task = FileUploadController.uploadFile(img, 'itemImages');
+
+      final snapshot = await task!.whenComplete(() {});
+
+      //-------getting the download url
+      final String downloadUrl = await snapshot.ref.getDownloadURL();
+
       //-getting an unique document ID
       String docid = item.doc().id;
 
@@ -33,14 +45,15 @@ class ItemController {
         "id": docid,
         "itemID": itemID,
         "itemName": itemName,
-        "itemPrice": itemPrice,
-        "itemQTY": itemQTY,
+        "itemPrice": double.parse(itemPrice),
+        "itemQTY": int.parse(itemQTY),
+        "image": downloadUrl,
       });
       // ignore: use_build_context_synchronously
       AlertHelper.showAlert(
-          context, "item Inserted Successfully", 'Success', DialogType.SUCCES);
+          context, "item Inserted Successfully", 'Success', DialogType.success);
     } catch (e) {
-      AlertHelper.showAlert(context, e.toString(), "Error", DialogType.ERROR);
+      AlertHelper.showAlert(context, e.toString(), "Error", DialogType.error);
     }
   }
 

@@ -7,11 +7,12 @@ class ItemModel {
   @JsonKey(name: 'itemName')
   String name;
   @JsonKey(name: 'itemPrice')
-  String price;
+  double price;
   @JsonKey(name: 'itemQTY')
-  String qty;
+  int qty;
+  String image;
 
-  ItemModel(this.id, this.name, this.price, this.qty);
+  ItemModel(this.id, this.name, this.price, this.qty, this.image);
 
   factory ItemModel.fromJson(Map<String, dynamic> json) =>
       _$ItemModelFromJson(json);
