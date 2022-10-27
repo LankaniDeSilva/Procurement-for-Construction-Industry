@@ -72,7 +72,7 @@ class OrderProvider extends ChangeNotifier {
         });
       } else {
         AlertHelper.showAlert(context, "You must add some items to cart",
-            "Error", DialogType.ERROR);
+            "Error", DialogType.error);
       }
     } catch (e) {
       setLoading(false);

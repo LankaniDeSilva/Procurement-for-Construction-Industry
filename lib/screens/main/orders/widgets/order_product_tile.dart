@@ -12,12 +12,10 @@ import '../../product_details/product_details.dart';
 class OrderProductTile extends StatelessWidget {
   const OrderProductTile({
     Key? key,
-    required this.item,
     required this.index,
     required this.model,
   }) : super(key: key);
 
-  final ItemModel item;
   final int index;
   final OrderModel model;
 
@@ -26,7 +24,7 @@ class OrderProductTile extends StatelessWidget {
     return InkWell(
       onTap: () {
         //---set the selected product model before navigating to the product details screen
-        Provider.of<ItemProvider>(context, listen: false).setItem(item);
+        // Provider.of<ItemProvider>(context, listen: false).setItem(item);
         //----------navigate to product details screen
         UtilFunction.navigator(context, const ItemDetails());
       },
@@ -73,7 +71,7 @@ class OrderProductTile extends StatelessWidget {
                     const SizedBox(height: 10),
                     CustomText(
                       text:
-                          "${model.items.first.model.name} + ${model.items.first.model.price}",
+                          "${model.items.first.model.name} x ${model.items.first.model.qty}",
                       fontSize: 15,
                     ),
                   ],

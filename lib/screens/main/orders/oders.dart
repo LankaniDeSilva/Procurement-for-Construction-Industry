@@ -33,28 +33,26 @@ class _OrdersState extends State<Orders> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Expanded(
-              //   child:
-              //   Consumer<OrderProvider>(
-              //     builder: (context, value, child) {
-              //       return value.orders.isEmpty
-              //           ? const Center(child: CustomText(text: "No orders"))
-              //           : ListView.separated(
-              //               itemBuilder: (context, index) {
-              //                 return OrderProductTile(
-              //                   index: index + 1,
-              //                   model: value.orders[index],
-              //                   item: value.orders[index].items,
-              //                 );
-              //               },
-              //               separatorBuilder: (context, index) =>
-              //                   const SizedBox(
-              //                     height: 20,
-              //                   ),
-              //               itemCount: value.orders.length);
-              //     },
-              //   ),
-              // ),
+              Expanded(
+                child: Consumer<OrderProvider>(
+                  builder: (context, value, child) {
+                    return value.orders.isEmpty
+                        ? const Center(child: CustomText(text: "No orders"))
+                        : ListView.separated(
+                            itemBuilder: (context, index) {
+                              return OrderProductTile(
+                                index: index + 1,
+                                model: value.orders[index],
+                              );
+                            },
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                            itemCount: value.orders.length);
+                  },
+                ),
+              ),
             ],
           ),
         );

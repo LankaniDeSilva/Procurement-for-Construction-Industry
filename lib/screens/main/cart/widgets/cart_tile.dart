@@ -41,15 +41,15 @@ class _CardTileState extends State<CardTile> {
         children: [
           Row(
             children: [
-              // ClipRRect(
-              //   borderRadius: BorderRadius.circular(15),
-              //   child: Image.network(
-              //     widget.model.model.image,
-              //     width: 70,
-              //     height: 70,
-              //     fit: BoxFit.fill,
-              //   ),
-              // ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.network(
+                  widget.model.model.image,
+                  width: 70,
+                  height: 70,
+                  fit: BoxFit.fill,
+                ),
+              ),
               const SizedBox(width: 16),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
