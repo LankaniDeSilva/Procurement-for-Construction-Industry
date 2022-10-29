@@ -38,7 +38,7 @@ class OrderProvider extends ChangeNotifier {
       double total =
           Provider.of<CartProvider>(context, listen: false).getCartTotal;
 
-      //----get cart items
+      //----get user
       UserModel user =
           Provider.of<UserPrivider>(context, listen: false).userModel;
 
@@ -102,6 +102,20 @@ class OrderProvider extends ChangeNotifier {
       Logger().e(e);
       //-stop the loader
       setLoading(false);
+    }
+  }
+
+  //---------remove notice
+  void removeOrder(String orderid, BuildContext context, String uid) {
+    try {
+      // //----get user
+      // UserModel user =
+      //     Provider.of<UserPrivider>(context, listen: false).userModel;
+      OrderController().deleteOrder(orderid, context);
+      fetchOrders(uid);
+      notifyListeners();
+    } catch (e) {
+      Logger().e(e);
     }
   }
 }

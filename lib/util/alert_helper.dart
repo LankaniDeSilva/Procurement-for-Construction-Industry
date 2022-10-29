@@ -14,7 +14,7 @@ class AlertHelper {
     return AwesomeDialog(
       context: context,
       dialogType: dialogType,
-      animType: AnimType.RIGHSLIDE,
+      animType: AnimType.rightSlide,
       title: title,
       desc: desc,
       btnCancelOnPress: () {},

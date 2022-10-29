@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
+import 'package:procurement_for_construction_industry/providers/order_provider/order_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../components/custom_text.dart';
@@ -100,7 +101,16 @@ class OrderProductTile extends StatelessWidget {
                   text: 'Total Rs.${model.total}0',
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
-                )
+                ),
+                InkWell(
+                  onTap: () =>
+                      Provider.of<OrderProvider>(context, listen: false)
+                          .removeOrder(model.id, context, model.userModel.uid),
+                  child: const Icon(
+                    Icons.close,
+                    color: AppColors.kRed,
+                  ),
+                ),
               ],
             )
           ],

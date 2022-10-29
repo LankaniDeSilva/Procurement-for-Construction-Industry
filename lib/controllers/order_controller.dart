@@ -1,6 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:logger/logger.dart';
+import 'package:procurement_for_construction_industry/util/alert_helper.dart';
 
 import '../models/objects.dart';
 
@@ -56,15 +59,26 @@ class OrderController {
     } else {
       status = "Pending";
     }
-    return orders
-        .add({
-          'id': docid,
-          'user': user.toJson(),
-          'total': total,
-          'item': list,
-          'orderState': status
-        })
-        .then((value) => Logger().i("Order data Added"))
-        .catchError((error) => Logger().e("Failed to add order: $error"));
+
+    await orders.doc(docid).set({
+      'id': docid,
+      'user': user.toJson(),
+      'total': total,
+      'item': list,
+      'orderState': status
+    });
+  }
+
+  Future<void>? deleteOrder(String id, BuildContext context) {
+    try {
+      return orders.doc(id).delete().then((_) {
+        AlertHelper.showAlert(context, "Order deleted successfully",
+            "Oder deleted", DialogType.success);
+        Logger().e(id);
+      }).catchError((error) => Logger().e(error));
+    } catch (e) {
+      Logger().e(e);
+      return null;
+    }
   }
 }

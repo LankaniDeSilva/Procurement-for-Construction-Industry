@@ -149,7 +149,7 @@ class DialogBoxContainer extends StatelessWidget {
                     const SizedBox(height: 23),
                     const CustomText(
                       textAlign: TextAlign.center,
-                      text: 'Thanks for Buying\nFrom Us!',
+                      text: 'Order Created!',
                       color: AppColors.primaryColor,
                       fontSize: 20,
                     )
