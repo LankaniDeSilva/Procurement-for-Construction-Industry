@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
+import 'package:procurement_for_construction_industry/util/asset_constants.dart';
 import '../../util/alert_helper.dart';
 import '../site_manager/file_upload_controller.dart';
 
@@ -136,6 +137,9 @@ class ItemController {
         //-----mapping to single item model
         itemModel = ItemModel.fromJson(element.data() as Map<String, dynamic>);
 
+        if (itemModel.image.isEmpty) {
+          itemModel.image = AssetsContants.dummyItem;
+        }
         //-----adding to the list
         itemList.add(itemModel);
       }

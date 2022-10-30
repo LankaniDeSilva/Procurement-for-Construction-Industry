@@ -13,14 +13,20 @@ class InventoryCotroller {
 
   //------------save site manager in firestore cloud
   Future<void> saveInventoryData(BuildContext context, String location,
-      double size, String siteName) async {
+      String qty, String itemName) async {
     try {
       //-getting an unique document ID
       String docid = inventory.doc().id;
 
       //--saving data
       await inventory.doc(docid).set(
-        {"location": location, "siteName": siteName, "size": size, "id": docid},
+        {
+          "location": location,
+          "itemName": itemName,
+          "qty": int.parse(qty),
+          "id": docid,
+          "date": DateTime.now(),
+        },
         SetOptions(merge: true),
       );
 
@@ -32,7 +38,7 @@ class InventoryCotroller {
     }
   }
 
-  //----------fetch inventory
+  // ----------fetch inventory
   Future<List<InventoryModel>> getInventory(String location) async {
     try {
       //----------query for fetching all the notices list
