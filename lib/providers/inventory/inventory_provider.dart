@@ -14,16 +14,16 @@ class InventoryProvider extends ChangeNotifier {
   TextEditingController get locationController => _locationController;
 
   //-------size text controller
-  TextEditingController _sizeController = TextEditingController();
+  TextEditingController _qtyController = TextEditingController();
 
   //----getter for size controller
-  TextEditingController get sizeController => _sizeController;
+  TextEditingController get qtyController => _qtyController;
 
   //-------site name text controller
-  final _siteNameController = TextEditingController();
+  final _itemController = TextEditingController();
 
   //----getter for site name controller
-  TextEditingController get siteNameController => _siteNameController;
+  TextEditingController get itemController => _itemController;
 
   //-------update size text controller
   TextEditingController _updateSizeController = TextEditingController();
@@ -54,8 +54,8 @@ class InventoryProvider extends ChangeNotifier {
   bool validateField(BuildContext context) {
     // first checking all the text filds are empty or not
     if (_locationController.text.isEmpty ||
-        _siteNameController.text.isEmpty ||
-        _sizeController.text.isEmpty) {
+        _itemController.text.isEmpty ||
+        _qtyController.text.isEmpty) {
       AlertHelper.showAlert(
         context,
         "Please fill all the fileds !",
@@ -78,14 +78,15 @@ class InventoryProvider extends ChangeNotifier {
         await InventoryCotroller().saveInventoryData(
           context,
           _locationController.text,
-          double.parse(_sizeController.text),
-          _siteNameController.text,
+          _qtyController.text,
+          _itemController.text,
         );
 
-        _sizeController.clear();
-        _siteNameController.clear();
+        _qtyController.clear();
+        _itemController.clear();
         _locationController.clear();
 
+        fetchInventory(_locationController.text);
         setLoading(false);
       }
     } catch (e) {
@@ -114,26 +115,27 @@ class InventoryProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> inventoryUpdate(
-      String id, double size, String location, BuildContext context) async {
-    try {
-      //----start the loader
-      setLoading(true);
+  // Future<void> inventoryUpdate(
+  //     String id, double size, String location, BuildContext context) async {
+  //   try {
+  //     //----start the loader
+  //     setLoading(true);
 
-      await InventoryCotroller().updateInventory(id, size, context);
-      fetchInventory(location);
-      notifyListeners();
+  //     await InventoryCotroller().updateInventory(id, size, context);
+  //     fetchInventory(location);
+  //     notifyListeners();
 
-      setLoading(false);
-    } catch (e) {
-      setLoading(false);
-      Logger().e(e);
-    }
-  }
+  //     setLoading(false);
+  //   } catch (e) {
+  //     setLoading(false);
+  //     Logger().e(e);
+  //   }
+  // }
 
-  TextEditingController displaySize(double size) {
-    _updateSizeController = TextEditingController(text: size.toString());
+  // TextEditingController displaySize(double size) {
+  //   _updateSizeController = TextEditingController(text: size.toString());
 
-    return _updateSizeController;
-  }
+  //   return _updateSizeController;
+  // }
+
 }

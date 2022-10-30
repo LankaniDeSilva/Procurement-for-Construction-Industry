@@ -21,40 +21,40 @@ class _UpdateInventoryState extends State<UpdateInventory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 10),
-            child: Column(
-              children: [
-                CustomTextField(
-                  hintText: "Size",
-                  controller: Provider.of<InventoryProvider>(context)
-                      .displaySize(widget.model.size),
-                  enabled: true,
-                  onChanged: (value) =>
-                      Provider.of<InventoryProvider>(context, listen: false)
-                          .updateSizeController
-                          .text = value,
-                ),
-                const SizedBox(height: 18),
-                Consumer<InventoryProvider>(
-                  builder: (context, value, child) {
-                    return CustomButton(
-                        text: 'Update Inventory',
-                        onTap: () => value.inventoryUpdate(
-                              widget.model.id,
-                              double.parse(value.updateSizeController.text),
-                              widget.model.location,
-                              context,
-                            ));
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+        // body: SafeArea(
+        //   child: SingleChildScrollView(
+        //     child: Padding(
+        //       padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 10),
+        //       child: Column(
+        //         children: [
+        //           CustomTextField(
+        //             hintText: "Size",
+        //             controller: Provider.of<InventoryProvider>(context)
+        //                 .displaySize(widget.model.size),
+        //             enabled: true,
+        //             onChanged: (value) =>
+        //                 Provider.of<InventoryProvider>(context, listen: false)
+        //                     .updateSizeController
+        //                     .text = value,
+        //           ),
+        //           const SizedBox(height: 18),
+        //           Consumer<InventoryProvider>(
+        //             builder: (context, value, child) {
+        //               return CustomButton(
+        //                   text: 'Update Inventory',
+        //                   onTap: () => value.inventoryUpdate(
+        //                         widget.model.id,
+        //                         double.parse(value.updateSizeController.text),
+        //                         widget.model.location,
+        //                         context,
+        //                       ));
+        //             },
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        );
   }
 }

@@ -38,73 +38,76 @@ class _InventoryState extends State<Inventory> {
           width: size.width,
           child: SafeArea(
             child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 52.0),
-                  const CustomText(
-                    text: "Inventory",
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primaryColor,
-                  ),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 10.0),
+                    const CustomText(
+                      text: "Inventory",
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primaryColor,
+                    ),
+                    const SizedBox(height: 10.0),
 
-                  const SizedBox(height: 20.0),
-                  CustomTextField(
-                    controller: Provider.of<InventoryProvider>(context)
-                        .locationController,
-                    hintText: "Location",
-                  ),
-                  const SizedBox(height: 8.0),
-                  CustomTextField(
-                    hintText: "Size",
-                    controller:
-                        Provider.of<InventoryProvider>(context).sizeController,
-                  ),
-                  const SizedBox(height: 16.0),
-                  CustomTextField(
-                    hintText: "Site Name",
-                    controller: Provider.of<InventoryProvider>(context)
-                        .siteNameController,
-                  ),
+                    const SizedBox(height: 20.0),
+                    CustomTextField(
+                      controller: Provider.of<InventoryProvider>(context)
+                          .locationController,
+                      hintText: "Location",
+                    ),
+                    const SizedBox(height: 8.0),
+                    CustomTextField(
+                      hintText: "ItemName",
+                      controller: Provider.of<InventoryProvider>(context)
+                          .itemController,
+                    ),
+                    const SizedBox(height: 16.0),
+                    CustomTextField(
+                      hintText: "Quantity",
+                      controller:
+                          Provider.of<InventoryProvider>(context).qtyController,
+                    ),
 
-                  const SizedBox(height: 29.0),
-                  //-------loading icon shows instead of button
-                  Consumer<InventoryProvider>(
-                    builder: (context, value, child) {
-                      return CustomButton(
-                          isLoading: value.loading,
-                          text: "Add to Inventory",
-                          onTap: () async => value.saveInventory(context));
-                    },
-                  ),
-                  Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      Container(
-                        height: MediaQuery.of(context).size.height,
-                        child: Consumer<InventoryProvider>(
-                            builder: (context, value, child) {
-                          return value.inventory.isEmpty
-                              ? const CustomText(
-                                  text: "Inventory is not available ",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                  color: AppColors.kBlack,
-                                )
-                              : ListView.builder(
-                                  itemBuilder: (context, index) {
-                                    return InventoryTile(
-                                      model: value.inventory[index],
-                                    );
-                                  },
-                                  itemCount: value.inventory.length,
-                                );
-                        }),
-                      ),
-                    ],
-                  )
-                ],
+                    const SizedBox(height: 29.0),
+                    //-------loading icon shows instead of button
+                    Consumer<InventoryProvider>(
+                      builder: (context, value, child) {
+                        return CustomButton(
+                            isLoading: value.loading,
+                            text: "Add to Inventory",
+                            onTap: () async => value.saveInventory(context));
+                      },
+                    ),
+                    Column(
+                      children: [
+                        const SizedBox(height: 20),
+                        Container(
+                          height: MediaQuery.of(context).size.height,
+                          child: Consumer<InventoryProvider>(
+                              builder: (context, value, child) {
+                            return value.inventory.isEmpty
+                                ? const CustomText(
+                                    text: "Inventory is not available ",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: AppColors.kBlack,
+                                  )
+                                : ListView.builder(
+                                    itemBuilder: (context, index) {
+                                      return InventoryTile(
+                                        model: value.inventory[index],
+                                      );
+                                    },
+                                    itemCount: value.inventory.length,
+                                  );
+                          }),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -153,7 +156,7 @@ class InventoryTile extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               CustomText(
-                text: 'Site Name: ${model.siteName}',
+                text: 'Item Name: ${model.itemName}',
                 fontWeight: FontWeight.w700,
                 fontSize: 16,
                 color: AppColors.kBlack,
@@ -161,25 +164,19 @@ class InventoryTile extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               CustomText(
-                text: 'Size:  ${model.size}',
+                text: 'Units:  ${model.qty}',
                 fontWeight: FontWeight.w700,
                 fontSize: 16,
                 color: AppColors.kBlack,
                 textAlign: TextAlign.justify,
               ),
-              const SizedBox(height: 9),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                        onTap: () => UtilFunction.navigator(
-                            context, UpdateInventory(model: model)),
-                        child: SvgPicture.asset(AssetsContants.editIcon)),
-                  ],
-                ),
-              )
+              CustomText(
+                text: 'Date:  ${model.date.toString()}',
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                color: AppColors.kBlack,
+                textAlign: TextAlign.justify,
+              ),
             ],
           ),
         ),

@@ -4,6 +4,8 @@ class AssetsContants {
   //dummy image paths
   static const profileimgurl =
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png';
+  static const dummyItem =
+      "https://constructionreviewonline.com/wp-content/uploads/2017/05/Construction-materials.jpg";
 
   // main path
   static const imagePath = 'assets/images/';

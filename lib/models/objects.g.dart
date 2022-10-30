@@ -44,17 +44,19 @@ Map<String, dynamic> _$CartItemModelToJson(CartItemModel instance) =>
 InventoryModel _$InventoryModelFromJson(Map<String, dynamic> json) =>
     InventoryModel(
       json['location'] as String,
-      json['siteName'] as String,
-      (json['size'] as num).toDouble(),
+      json['itemName'] as String,
+      json['qty'] as int,
+      InventoryModel._dateTimeFromTimestamp(json['date'] as Timestamp),
       json['id'] as String,
     );
 
 Map<String, dynamic> _$InventoryModelToJson(InventoryModel instance) =>
     <String, dynamic>{
       'location': instance.location,
-      'siteName': instance.siteName,
-      'size': instance.size,
+      'itemName': instance.itemName,
+      'qty': instance.qty,
       'id': instance.id,
+      'date': InventoryModel._dateTimeAsIs(instance.date),
     };
 
 SiteManager _$SiteManagerFromJson(Map<String, dynamic> json) => SiteManager(
