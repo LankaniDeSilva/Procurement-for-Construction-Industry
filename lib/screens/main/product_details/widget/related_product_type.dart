@@ -21,9 +21,6 @@ class RelatedProductTile extends StatelessWidget {
       onTap: () {
         //---set the selected product model before navigating to the product details screen
         Provider.of<ItemProvider>(context, listen: false).setItem(itemModel);
-
-        //------clear the product counter before go to the details screen
-        // Provider.of<CartProvider>(context, listen: false).clearCart();
       },
       child: Container(
         width: 100,

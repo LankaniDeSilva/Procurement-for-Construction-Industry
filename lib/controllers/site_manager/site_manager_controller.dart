@@ -90,22 +90,4 @@ class SiteManagerController {
       return null;
     }
   }
-
-  // Future<void> isSiteManagerRegistered(String uid, BuildContext context) async {
-  //   try {
-  //     final QuerySnapshot result =
-  //         await sitemanager.where('uid', isEqualTo: uid).limit(1).get();
-  //     final List<DocumentSnapshot> documents = result.docs;
-
-  //     if (documents.isEmpty) {
-  //       UtilFunction.navigator(context, const SiteManagerRegistration());
-  //     } else {
-  //       Provider.of<SiteManagerProvider>(context, listen: false)
-  //           .fetchSiteManager(uid, context);
-  //       UtilFunction.navigator(context, const MainScreen());
-  //     }
-  //   } catch (e) {
-  //     Logger().e(e);
-  //   }
-  // }
 }

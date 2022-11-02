@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import 'package:procurement_for_construction_industry/providers/inventory/inventory_provider.dart';
-import 'package:procurement_for_construction_industry/screens/main/inventory/update_inventory.dart';
 import 'package:procurement_for_construction_industry/util/asset_constants.dart';
 
 import 'package:provider/provider.dart';
