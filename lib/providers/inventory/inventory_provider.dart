@@ -1,12 +1,14 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+
 import 'package:procurement_for_construction_industry/controllers/inventory_controller.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../util/alert_helper.dart';
-import '../auth/user_provider.dart';
+
 import '../site_manager/site_manager_provider.dart';
 
 class InventoryProvider extends ChangeNotifier {

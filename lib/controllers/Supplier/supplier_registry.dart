@@ -2,7 +2,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import '../../util/alert_helper.dart';
 
@@ -30,7 +29,7 @@ class SupplierController {
       //-getting an unique document ID
       // String docid = supplier.doc().id;
 
-      //-saving the baby data in cloud firestore
+      //-saving the supplier data in cloud firestore
       await supplier.doc(uid).set({
         "id": uid,
         "supplierName": supplierName,

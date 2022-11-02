@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
 import 'package:procurement_for_construction_industry/screens/main/orders/widgets/order_product_tile.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';

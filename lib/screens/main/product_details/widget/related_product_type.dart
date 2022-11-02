@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
-import 'package:procurement_for_construction_industry/providers/cart/cart_provider.dart';
-import 'package:procurement_for_construction_industry/util/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../components/custom_text.dart';
+import '../../../../util/app_colors.dart';
 
 class RelatedProductTile extends StatelessWidget {
   const RelatedProductTile({
@@ -36,7 +35,6 @@ class RelatedProductTile extends StatelessWidget {
           ),
         ),
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
@@ -54,7 +52,6 @@ class RelatedProductTile extends StatelessWidget {
                     child: CustomText(
                       text: itemModel.name,
                       fontSize: 11,
-                      // color: AppColors.kWhite,
                       fontWeight: FontWeight.w600,
                       overflow: TextOverflow.ellipsis,
                     ),

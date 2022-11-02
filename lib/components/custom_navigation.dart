@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:procurement_for_construction_industry/components/custom_text.dart';
-import '../util/colors.dart';
+import '../util/app_colors.dart';
 
 class CustomNavigation extends StatelessWidget {
   const CustomNavigation({

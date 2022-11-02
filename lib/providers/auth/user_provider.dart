@@ -4,25 +4,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:logger/logger.dart';
-import 'package:procurement_for_construction_industry/controllers/site_manager/site_manager_controller.dart';
+
 import 'package:procurement_for_construction_industry/providers/Supplier/Item_provider.dart';
 import 'package:procurement_for_construction_industry/providers/inventory/inventory_provider.dart';
 import 'package:procurement_for_construction_industry/providers/site_manager/site_manager_provider.dart';
-import 'package:procurement_for_construction_industry/screens/main/home/home.dart';
-import 'package:procurement_for_construction_industry/screens/main/main_screen.dart';
 import 'package:procurement_for_construction_industry/screens/site_manager/site_manager_registration.dart';
 import 'package:procurement_for_construction_industry/screens/staff/accountant/account_home.dart';
 import 'package:procurement_for_construction_industry/screens/staff/manager/manager_home.dart';
 import 'package:procurement_for_construction_industry/screens/staff/proc_depart/proc_dept_home.dart';
 import 'package:procurement_for_construction_industry/screens/supplier/supplier_home.dart';
-import 'package:procurement_for_construction_industry/util/alert_helper.dart';
 import 'package:procurement_for_construction_industry/util/util_function.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/auth_controller.dart';
+
 import '../../models/objects.dart';
 
 import '../../screens/auth/signup.dart';
+
 import '../order_provider/order_provider.dart';
 
 class UserPrivider extends ChangeNotifier {

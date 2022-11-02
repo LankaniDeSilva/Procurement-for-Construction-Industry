@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:procurement_for_construction_industry/models/objects.dart';
 import 'package:procurement_for_construction_industry/providers/inventory/inventory_provider.dart';
-import 'package:procurement_for_construction_industry/util/asset_constants.dart';
 
 import 'package:provider/provider.dart';
 
@@ -11,7 +9,6 @@ import '../../../components/custom_button.dart';
 import '../../../components/custom_text.dart';
 import '../../../components/custom_textfield.dart';
 import '../../../util/app_colors.dart';
-import '../../../util/util_function.dart';
 
 class Inventory extends StatefulWidget {
   const Inventory({Key? key}) : super(key: key);

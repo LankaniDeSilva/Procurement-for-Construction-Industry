@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:procurement_for_construction_industry/util/colors.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../components/custom_text.dart';
 import '../../../../providers/cart/cart_provider.dart';
+import '../../../../util/app_colors.dart';
 
 class CounterSection extends StatelessWidget {
   const CounterSection({
@@ -16,7 +16,7 @@ class CounterSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColors.ashBorder,
+          color: AppColors.kAsh,
           width: 2,
         ),
         borderRadius: BorderRadius.circular(8),
