@@ -24,8 +24,6 @@ class OrderProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        //---set the selected product model before navigating to the product details screen
-        // Provider.of<ItemProvider>(context, listen: false).setItem(item);
         //----------navigate to product details screen
         UtilFunction.navigator(context, const ItemDetails());
       },

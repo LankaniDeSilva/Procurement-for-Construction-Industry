@@ -12,7 +12,13 @@ class ItemModel {
   int qty;
   String image;
 
-  ItemModel(this.id, this.name, this.price, this.qty, this.image);
+  ItemModel(
+    this.id,
+    this.name,
+    this.price,
+    this.qty,
+    this.image,
+  );
 
   factory ItemModel.fromJson(Map<String, dynamic> json) =>
       _$ItemModelFromJson(json);

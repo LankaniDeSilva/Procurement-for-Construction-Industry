@@ -20,7 +20,7 @@ class ItemController {
   //---create instance of itemModel
   late ItemModel itemModel;
 
-  //-----------save baby function---
+  //-----------save Item function---
   Future<void> saveItem(
     BuildContext context,
     String itemID,
@@ -57,71 +57,6 @@ class ItemController {
       AlertHelper.showAlert(context, e.toString(), "Error", DialogType.error);
     }
   }
-
-  // //----------fetch item
-  // Future<List<itemModel>> getitem() async {
-  //   try {
-  //     //----------query for fetching all the item list
-  //     QuerySnapshot snapshot = await item.get();
-
-  //     //----------baby list
-  //     List<itemModel> itemList = [];
-
-  //     //----------mapping fetch data to baby model and store in baby list
-  //     for (var element in snapshot.docs) {
-  //       //-----mapping to single baby model
-  //       itemModel model =
-  //           itemModel.fromJson(element.data() as Map<String, dynamic>);
-
-  //       //-----adding to the list
-  //       itemList.add(model);
-  //     }
-
-  //     return itemList;
-  //   } catch (e) {
-  //     Logger().e(e);
-  //     return [];
-  //   }
-  // }
-
-  // Future<List<itemModel>> getData(String babyName) async {
-  //   List<itemModel> dataList = [];
-  //   try {
-  //     await item
-  //         .where('babyName', isEqualTo: babyName)
-  //         .get()
-  //         .then((QuerySnapshot querySnapshot) => {
-  //               querySnapshot.docs.forEach((doc) {
-  //                 dataList.add(doc.data());
-  //               }),
-  //             });
-  //     return dataList;
-  //   } catch (e) {
-  //     Logger().e(e);
-  //     return [];
-  //   }
-  // }
-  // Future<List<itemModel>> getBabyByName(String name) async {
-  //   List<itemModel> itemList = [];
-
-  //   try {
-  //     FirebaseFirestore.instance
-  //         .collection('item')
-  //         .where('babyName', isEqualTo: name)
-  //         .get()
-  //         .then((QuerySnapshot querySnapshot) => {
-  //               querySnapshot.docs.forEach((doc) {
-  //                 itemList.add(
-  //                     itemModel.fromJson(doc.data() as Map<String, dynamic>));
-  //               }),
-  //             });
-
-  //     return itemList;
-  //   } catch (e) {
-  //     Logger().e(e);
-  //     return [];
-  //   }
-  // }
 
   //----------fetch items
   Future<List<ItemModel>> getItems() async {

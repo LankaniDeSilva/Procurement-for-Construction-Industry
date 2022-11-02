@@ -119,6 +119,7 @@ class SiteManagerProvider extends ChangeNotifier {
         //-----update the user model img field with return download url
         _siteManager.img = imgUrl;
         notifyListeners();
+
         //-stop the loader
         setLoading(false);
       }

@@ -55,27 +55,6 @@ class ItemProvider extends ChangeNotifier {
   //-----product controller instance
   final ItemController _itemController = ItemController();
 
-  // //------initialize the baby model list
-  // List<SupplierModel> _clinics = [];
-
-  // //-----getter for baby list
-  // List<SupplierModel> get clinics => _clinics;
-
-  // //------initialize the filter baby model list
-  // List<SupplierModel> _filterClinic = [];
-
-  // //-----getter for filter baby list
-  // List<SupplierModel> get filterClinic => _filterClinic;
-
-  // //------initialize the baby model list
-  // List<SupplierModel> _searchResult = [];
-
-  // //-----getter for baby list
-  // List<SupplierModel> get searchResult => _searchResult;
-
-  // -----baby controller instance
-  // final ItemController _ItemController = ItemController();
-
   //--validate text field function
 
   bool validateField(BuildContext context) {
@@ -127,45 +106,6 @@ class ItemProvider extends ChangeNotifier {
       AlertHelper.showAlert(context, e.toString(), 'Error', DialogType.ERROR);
     }
   }
-
-  // //-----fetch baby function
-  // Future<void> fetchclinics() async {
-  //   try {
-  //     //------start the loader
-  //     setLoading(true);
-
-  //     //----start fetching clinics
-  //     _clinics = await _ItemController.getclinic();
-  //     Logger().w(_clinics.length);
-
-  //     notifyListeners();
-
-  //     //-----stop loading
-  //     setLoading(false);
-  //   } catch (e) {
-  //     Logger().e(e);
-  //     setLoading(false);
-  //   }
-  // }
-
-  // Future<List<SupplierModel>> onSearchTextChanged(String name) async {
-  //   // _searchResult.clear();
-  //   // if (text.isEmpty) {
-  //   //   return;
-  //   // }
-
-  //   // _clinics.forEach((baby) {
-  //   //   if (baby.babyName.contains(text)) _searchResult.add(baby);
-  //   // });
-  //   try {
-  //     _searchResult.clear();
-  //     _filterClinic = await ItemController().getBabyByName(name);
-  //     return _filterClinic;
-  //   } catch (e) {
-  //     Logger().e(e);
-  //     return [];
-  //   }
-  // }
 
   //-----fetch products function
   Future<void> fetchItems() async {

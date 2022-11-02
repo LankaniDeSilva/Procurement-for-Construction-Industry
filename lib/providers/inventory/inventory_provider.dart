@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:procurement_for_construction_industry/controllers/inventory_controller.dart';
 import 'package:procurement_for_construction_industry/models/objects.dart';
+import 'package:provider/provider.dart';
 
 import '../../util/alert_helper.dart';
+import '../auth/user_provider.dart';
+import '../site_manager/site_manager_provider.dart';
 
 class InventoryProvider extends ChangeNotifier {
   //-------location text controller
@@ -86,7 +89,12 @@ class InventoryProvider extends ChangeNotifier {
         _itemController.clear();
         _locationController.clear();
 
-        fetchInventory(_locationController.text);
+        SiteManager manager =
+            // ignore: use_build_context_synchronously
+            Provider.of<SiteManagerProvider>(context, listen: false)
+                .siteManager;
+
+        fetchInventory(manager.location);
         setLoading(false);
       }
     } catch (e) {
@@ -114,28 +122,4 @@ class InventoryProvider extends ChangeNotifier {
       Logger().e(e);
     }
   }
-
-  // Future<void> inventoryUpdate(
-  //     String id, double size, String location, BuildContext context) async {
-  //   try {
-  //     //----start the loader
-  //     setLoading(true);
-
-  //     await InventoryCotroller().updateInventory(id, size, context);
-  //     fetchInventory(location);
-  //     notifyListeners();
-
-  //     setLoading(false);
-  //   } catch (e) {
-  //     setLoading(false);
-  //     Logger().e(e);
-  //   }
-  // }
-
-  // TextEditingController displaySize(double size) {
-  //   _updateSizeController = TextEditingController(text: size.toString());
-
-  //   return _updateSizeController;
-  // }
-
 }
